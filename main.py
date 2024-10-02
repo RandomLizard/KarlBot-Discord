@@ -11,7 +11,7 @@ from enum import Enum
 
 load_dotenv()
 MY_GUILD=discord.Object(id=os.getenv("DIMMADOME")) #replace this with your desired guild ID
-TOKEN = os.getenv("DISCORD_TOKEN")
+TOKEN = os.getenv("DEV_DISCORD_TOKEN")
 
 class MyClient(discord.Client):
     def __init__(self, *, intents: discord.Intents):
