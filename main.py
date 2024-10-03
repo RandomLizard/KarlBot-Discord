@@ -67,6 +67,13 @@ async def channel_info(interaction: discord.Interaction, channel: Union[discord.
 async def secret(interaction: discord.Interaction):
     """Super secret do not run this"""
     await interaction.response.send_message(f"https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fstatic.demilked.com%2Fwp-content%2Fuploads%2F2018%2F03%2F5aaa1cc4c422b-funny-weird-wtf-stock-photos-28-5a3a5b135f099__700.jpg")
+    
+
+@client.tree.command(name="Play")
+@app_commands.describe(source="Either a youtube link or a search for something to play")
+async def play_music(interaction: discord.Interaction):
+    """Plays audio from a youtube video"""
+
 
 
 client.run(TOKEN)
