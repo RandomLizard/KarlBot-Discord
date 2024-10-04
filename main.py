@@ -1,6 +1,7 @@
 import discord
 import os
 import asyncio
+import random
 
 from dotenv import load_dotenv
 from discord import app_commands
@@ -97,11 +98,31 @@ async def channel_info(interaction: discord.Interaction, channel: Union[discord.
     embed.set_footer(text='Created').timestamp = channel.created_at
     await interaction.response.send_message(embed=embed)
 
+#shitpost commands
+
+@client.tree.command(name="furry-ize")
+@app_commands.describe(
+    user = "User to inflict furry upon"
+)
+async def make_furry(interaction: discord.Interaction, user: discord.Member):
+    """Turns an unfortunate soul into a furry"""
+    furry_name = user.display_name.replace("r", "w")
+    furry_name = furry_name.replace("l", "w")
+    furry_name = furry_name.replace("R", "W")
+    chance = random.randrange(0,100)
+    try: 
+        if chance > 50:
+            await user.edit(nick=f"{furry_name} OwO")
+        else:
+            await user.edit(nick=f"{furry_name} UwU")
+    except:
+        await interaction.response.send_message(f"I was not able to turn {user.display_name} into a furry. They are too powerful. (My role is below theirs)",ephemeral=True)
+    await interaction.response.send_message(f"I turned {user.display_name} into a furry. I hope you're happy with yourself.", ephemeral=True)
 
 @client.tree.command(name="ultrasecret")
 async def secret(interaction: discord.Interaction):
     """Super secret do not run this"""
-    await interaction.response.send_message(f"https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fstatic.demilked.com%2Fwp-content%2Fuploads%2F2018%2F03%2F5aaa1cc4c422b-funny-weird-wtf-stock-photos-28-5a3a5b135f099__700.jpg")
+    await interaction.response.send_message(f"https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fstatic.demilked.com%2Fwp-content%2Fuploads%2F2018%2F03%2F5aaa1cc4c422b-funny-weird-wtf-stock-photos-28-5a3a5b135f099__700.jpg",ephemeral=True)
     
 
 # Music related commands below
