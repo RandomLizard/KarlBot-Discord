@@ -117,7 +117,8 @@ async def make_furry(interaction: discord.Interaction, user: discord.Member):
             await user.edit(nick=f"{furry_name} UwU")
     except:
         await interaction.response.send_message(f"I was not able to turn {user.display_name} into a furry. They are too powerful. (My role is below theirs)",ephemeral=True)
-    await interaction.response.send_message(f"I turned {user.display_name} into a furry. I hope you're happy with yourself.", ephemeral=True)
+    else:
+        await interaction.response.send_message(f"I turned {user.display_name} into a furry. I hope you're happy with yourself.", ephemeral=True)
 
 @client.tree.command(name="ultrasecret")
 async def secret(interaction: discord.Interaction):
